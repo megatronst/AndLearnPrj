@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.i2nexted.framdemo"
+        minSdkVersion 17
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    // 渠道配置
+    productFlavors {
+        wandoujia {}
+        qh {}
+        baidu {}
+        xiaomi {}
+        yyb {}
+        meizu {}
+        samsung {}
+        oppo {}
+        huawei {}
+        lenovo {}
+        nineone {}
+        hiapk {}
+        moretop {}
+        triplesix {}
+        i2 {}
+
+    }
+
+    // 在大测试包和正式包的时候都使用混淆以及时发现由于混淆不当导致的问题
+    buildTypes {
+        release {
+            zipAlignEnabled true     //Zipalign优化
+            shrinkResources false    // 移除无用的resource文件
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            zipAlignEnabled true     //Zipalign优化
+            shrinkResources false    // 移除无用的resource文件
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // 大测试包的时候和打正式包的时候使用相同的配置，以避免某些第三方包无法使用
+//    signingConfigs {
+//        debug {
+//            storeFile file("dubit.jks")
+//            keyAlias "dubit"
+//            storePassword "dubit123456"
+//            keyPassword "dubit123456"
+//        }
+//
+//        release {
+//            storeFile file("dubit.jks")
+//            keyAlias "dubit"
+//            storePassword "dubit123456"
+//            keyPassword "dubit123456"
+//        }
+//    }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile "com.android.support:recyclerview-v7:$support_version"
+    compile "com.android.support:design:$support_version"
+    compile "io.reactivex:rxjava:$rxjava_version"
+    compile "io.reactivex:rxandroid:$rxjava_version"
+    compile "com.trello:rxlifecycle:$rxlifecycle_version"
+    compile "com.trello:rxlifecycle-components:$rxlifecycle_version"
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
+    compile "com.squareup.okhttp3:okhttp:$okhttp_version"
+    compile "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    compile 'com.squareup.okio:okio:1.7.0'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.facebook.fresco:fresco:1.2.0'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.16'
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+    debugCompile 'com.facebook.stetho:stetho:1.1.0'
+    debugCompile 'com.facebook.stetho:stetho-okhttp3:1.3.1'
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary_version"
+}

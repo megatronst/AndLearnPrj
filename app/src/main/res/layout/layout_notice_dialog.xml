@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="313dp"
+    android:layout_height="wrap_content"
+    android:minHeight="110dp"
+    android:background="#f1f1"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/id_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="取消收藏？"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="#333333"
+        android:textSize="17sp" />
+
+    <View
+        android:id="@+id/horizontal_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/title"
+        android:background="#cdcdcd" />
+
+        <TextView
+            android:id="@+id/id_tv_yes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+</LinearLayout>

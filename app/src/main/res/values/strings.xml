@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FramDemo</string>
+    <string name="internationalize">中文</string>
+
+    <!--***************************************空白页相关**************************************-->
+    <string name="emptypage_network_notaviliable">没有网络！</string>
+    <string name="emptypage_http_error">网络异常！</string>
+    <string name="emptypage_nodata">没有数据！</string>
+    <string name="emptypage_data_error">数据异常！</string>
+</resources>
